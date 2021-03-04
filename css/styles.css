@@ -1,0 +1,22 @@
+#header,
+#footer {
+  text-align: center;
+}
+
+#game-selection,
+#game-options,
+.character,
+.weapon,
+.scene,
+.alien  {
+  display: flex;
+  justify-content: center;
+}
+.game-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.opponent-ai {
+  display: none;
+}

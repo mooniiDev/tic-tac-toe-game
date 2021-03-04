@@ -1,12 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="css/modern-normalize.min.css">
+  <link type="text/css" rel="stylesheet" href="css/styles.css">
   <title>Tic Tac Toe</title>
 </head>
 <body>
+  <header id="header">
+    <h1>Tic Tac Toe</h1>
+    <p>Space Edition</p>
+  </header>
 
+  <div id="game-selection">
+    <button type="button" class="pvp">PvP</button><button type="button" class="pve">PvE</button>
+  </div>
+
+  <div id="game-options">
+    <div class="player">
+      <div class="character">
+        <div class="char-1">char-1</div>
+        <div class="char-2">char-2</div>
+      </div>
+      <div class="weapon">
+        <div class="weapon-1">weapon-1</div>
+        <div class="weapon-2">weapon-2</div>
+      </div>
+    </div>
+
+    <div class="game-start">
+      <div class="scene">
+        <div class="scene-1">scene-1</div>
+        <div class="scene-2">scene-2</div>
+        <div class="scene-3">scene-3</div>
+        <div class="scene-4">scene-4</div>
+      </div>
+      <button class="play">Play</button>
+    </div>
+
+    <div class="opponent-human">
+      <div class="character">
+        <div class="char-1">oppon-1</div>
+        <div class="char-2">oppon-2</div>
+      </div>
+      <div class="weapon">
+        <div class="weapon-1">weapon-1</div>
+        <div class="weapon-2">weapon-2</div>
+      </div>
+    </div>
+
+    <div class="opponent-ai">
+      <div class="alien">
+        <div class="alien-1">alien-1</div>
+        <div class="alien-2">alien-2</div>
+      </div>
+      <div class="weapon">
+        <div class="weapon-1">weapon-1</div>
+        <div class="weapon-2">weapon-2</div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <p id="crafted-by"> ☽ Crafted by
+      <a href="https://github.com/mooniiDev" target="_blank" >mooniiDev</a> |
+      <a href="https://github.com/mooniiDev/tic-tac-toe-game" target="_blank">Source</a> ☾
+    </p>
+  </footer>
+
+  <script type="text/javascript" src="scripts.js"></script>
 </body>
 </html>
