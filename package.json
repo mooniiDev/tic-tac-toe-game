@@ -1,0 +1,24 @@
+{
+  "name": "tic-tac-toe-game",
+  "version": "1.0.0",
+  "description": "This is a browser version of Tic Tac Toe game from The Odin Project [curriculum](https://www.theodinproject.com/courses/javascript/lessons/tic-tac-toe-javascript).",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mooniiDev/tic-tac-toe-game.git"
+  },
+  "author": "mooniiDev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mooniiDev/tic-tac-toe-game/issues"
+  },
+  "homepage": "https://github.com/mooniiDev/tic-tac-toe-game#readme",
+  "devDependencies": {
+    "eslint": "^7.21.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
