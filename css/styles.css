@@ -1,22 +1,38 @@
+/* COLOR PALETTE */
+:root {
+  --violet: #BDB2FF;
+  --black: #2b2b2b;
+  --purple: #2e185f;
+  --blue: #9BD9F1;
+}
+
 #header,
-#footer {
+#footer,
+#start-game {
   text-align: center;
 }
 
 #game-selection,
 #game-options,
 .character,
-.weapon,
-.scene,
+.mark,
 .alien  {
   display: flex;
   justify-content: center;
 }
-.game-start {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.opponent-ai {
+#opponent-ai {
   display: none;
+}
+
+#andromeda {
+  background-color: var(--violet);
+}
+#black-eye {
+  background-color: var(--black);
+}
+#fireworks {
+  background-color: var(--purple);
+}
+#milky-way {
+  background-color: var(--blue);
 }
