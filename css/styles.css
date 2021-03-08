@@ -1,15 +1,32 @@
 /* COLOR PALETTE */
 :root {
-  --violet: #BDB2FF;
-  --black: #2b2b2b;
-  --purple: #2e185f;
-  --blue: #9BD9F1;
+  --violet: #A39DD2;
+  --black: #19191E;
+  --purple: #332453;
+  --blue: #97C6D9;
+  --white: #FFFFFF;
 }
 
+#body {
+  background-image: url('../images/sky.jpg');
+  background-size: cover;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  color: var(--white);
+}
 #header,
-#footer,
-#start-game {
+#game-options,
+#start-game,
+#footer {
   text-align: center;
+}
+#header h1 {
+  font-family: 'Codystar', cursive;
+  margin-bottom: 0;
+}
+#header p {
+  margin-top: 0;
+  font-size: 15px;
 }
 
 #game-selection,
@@ -24,15 +41,77 @@
   display: none;
 }
 
+#game-selection button,
+.play {
+  margin: 20px;
+  padding: 10px 40px;
+  background-color: transparent;
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 1px;
+  transition: 0.2s;
+}
+#game-selection button:hover,
+.play:hover {
+cursor: pointer;
+box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
+transition: 0.2s;
+}
+
+#game-options i {
+  font-size: 50px;
+}
+#game-options i:hover,
+.galaxies div:hover {
+  cursor: pointer;
+}
+
+#player,
+#scenes,
+#opponent-human,
+#opponent-ai {
+  margin: 20px;
+}
+.character div,
+.mark div,
+.alien div {
+  padding: 10px;
+}
+
+.galaxies div {
+  padding: 14px 5px;
+}
 #andromeda {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+#andromeda,
+.andromeda {
   background-color: var(--violet);
 }
-#black-eye {
+#black-eye,
+.black-eye {
   background-color: var(--black);
 }
-#fireworks {
+#fireworks,
+.fireworks {
   background-color: var(--purple);
 }
-#milky-way {
+#milky-way{
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+#milky-way,
+.milky-way {
   background-color: var(--blue);
+}
+
+#footer {
+  font-size: 15px;
+}
+#footer a {
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--white);
 }
