@@ -3,32 +3,24 @@
   --violet: #A39DD2;
   --black: #19191E;
   --purple: #332453;
-  --blue: #97C6D9;
+  --blue: #B3D8E6;
   --white: #FFFFFF;
 }
 
-#body {
-  background-image: url('../images/sky.jpg');
-  background-size: cover;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 20px;
-  color: var(--white);
-}
+/* ALIGNMENT */
 #header,
 #game-options,
 #start-game,
 #footer {
   text-align: center;
 }
-#header h1 {
-  font-family: 'Codystar', cursive;
-  margin-bottom: 0;
+#player,
+#scenes,
+#enemy-human,
+#enemy-ai {
+  margin: 20px;
+  width: 180px;
 }
-#header p {
-  margin-top: 0;
-  font-size: 15px;
-}
-
 #game-selection,
 #game-options,
 .character,
@@ -37,8 +29,41 @@
   display: flex;
   justify-content: center;
 }
-#opponent-ai {
+.character div,
+.mark div,
+.alien div {
+  padding: 10px;
+}
+#game-window {
   display: none;
+  text-align: center;
+}
+
+/* DISPLAYING */
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
+}
+
+#body {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  color: var(--white);
+}
+.body-bg {
+  background-image: url('../images/sky.jpg');
+  background-size: cover;
+}
+
+#header h1 {
+  font-family: 'Codystar', cursive;
+  margin-bottom: 0;
+}
+#header p {
+  margin-top: 0;
+  font-size: 15px;
 }
 
 #game-selection button,
@@ -51,12 +76,15 @@
   border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 10px 1px;
   transition: 0.2s;
+  outline: none;
 }
 #game-selection button:hover,
-.play:hover {
-cursor: pointer;
-box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
-transition: 0.2s;
+#game-selection button:focus,
+.play:hover,
+.play:focus {
+  cursor: pointer;
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
+  transition: 0.2s;
 }
 
 #game-options i {
@@ -67,44 +95,36 @@ transition: 0.2s;
   cursor: pointer;
 }
 
-#player,
-#scenes,
-#opponent-human,
-#opponent-ai {
-  margin: 20px;
-}
-.character div,
-.mark div,
-.alien div {
-  padding: 10px;
-}
-
 .galaxies div {
-  padding: 14px 5px;
+  padding: 14px 20px;
 }
 #andromeda {
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-}
-#andromeda,
-.andromeda {
   background-color: var(--violet);
 }
-#black-eye,
-.black-eye {
+.andromeda {
+  background-image: url('../images/andromeda.jpg');
+}
+#black-eye {
   background-color: var(--black);
 }
-#fireworks,
-.fireworks {
+.black-eye  {
+  background-image: url('../images/black-eye.jpg');
+}
+#fireworks {
   background-color: var(--purple);
 }
-#milky-way{
+.fireworks {
+  background-image: url('../images/fireworks.jpg');
+}
+#milky-way {
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-#milky-way,
-.milky-way {
   background-color: var(--blue);
+}
+.milky-way {
+  background-image: url('../images/milky-way.jpg');
 }
 
 #footer {
@@ -114,4 +134,11 @@ transition: 0.2s;
   font-weight: 900;
   text-decoration: none;
   color: var(--white);
+  transition: 0.2s;
+  outline: none;
+}
+#footer a:hover,
+#footer a:focus {
+  color: var(--purple);
+  transition: 0.2s;
 }

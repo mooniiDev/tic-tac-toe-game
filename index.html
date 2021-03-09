@@ -16,70 +16,76 @@
   <title>Tic Tac Toe</title>
 </head>
 
-<body id="body">
+<body id="body" class="body-bg">
   <header id="header">
     <h1>Tic Tac Toe</h1>
     <p>⭒◦∘space edition∘◦⭒</p>
   </header>
 
-  <div id="game-selection">
-    <button type="button" class="pvp">PvP</button>
-    <button type="button" class="pve">PvE</button>
+  <div id="game-selection-window">
+    <div id="game-selection">
+      <button type="button" class="pvp">PvP</button>
+      <button type="button" class="pve">PvE</button>
+    </div>
+
+    <div id="game-options">
+      <div id="player">
+        <p>Your Avatar</p>
+        <div class="character">
+          <div><i class="fad fa-user-astronaut"></i></div>
+          <div><i class="fad fa-cat-space"></i></div>
+        </div>
+        <p>Your Mark</p>
+        <div class="mark">
+          <div><i class="fad fa-rocket-launch"></i></div>
+          <div><i class="fad fa-comet fa-flip-horizontal"></i></div>
+        </div>
+      </div>
+
+      <div id="scenes">
+        <div class="galaxies">
+          <p>Galaxies</p>
+          <div id="andromeda" class="galaxy">Andromeda</div>
+          <div id="black-eye" class="galaxy">Black Eye</div>
+          <div id="fireworks" class="galaxy">Fireworks</div>
+          <div id="milky-way" class="galaxy">Milky Way</div>
+        </div>
+      </div>
+
+      <div id="enemy-human">
+        <p>Enemy Avatar</p>
+        <div class="character">
+          <div><i class="fad fa-alicorn fa-flip-horizontal"></i></div>
+          <div><i class="fad fa-user-cowboy"></i></div>
+        </div>
+        <p>Enemy Mark</p>
+        <div class="mark">
+          <div><i class="fad fa-meteor"></i></div>
+          <div><i class="fad fa-star-shooting"></i></div>
+        </div>
+      </div>
+
+      <div id="enemy-ai" class="display-none">
+        <p>AI Avatar</p>
+        <div class="character">
+          <div><i class="fad fa-pastafarianism"></i></div>
+          <div><i class="fad fa-alien-monster"></i></div>
+        </div>
+        <p>AI Mark</p>
+        <div class="mark">
+          <div><i class="fad fa-bacterium"></i></div>
+          <div><i class="fad fa-virus"></i></div>
+        </div>
+      </div>
+    </div>
+
+    <div id="start-game">
+      <button class="play">Play</button>
+    </div>
   </div>
 
-  <div id="game-options">
-    <div id="player">
-      <p>Your Avatar</p>
-      <div class="character">
-        <div class="char-1"><i class="fad fa-user-astronaut"></i></div>
-        <div class="char-2"><i class="fad fa-cat-space"></i></div>
-      </div>
-      <p>Your Mark</p>
-      <div class="mark">
-        <div class="mark-1"><i class="fad fa-rocket-launch"></i></div>
-        <div class="mark-2"><i class="fad fa-comet fa-flip-horizontal"></i></div>
-      </div>
-    </div>
-
-    <div id="scenes">
-      <div class="galaxies">
-        <p>Galaxies</p>
-        <div id="andromeda" class="galaxy">Andromeda</div>
-        <div id="black-eye" class="galaxy">Black Eye</div>
-        <div id="fireworks" class="galaxy">Fireworks</div>
-        <div id="milky-way" class="galaxy">Milky Way</div>
-      </div>
-    </div>
-
-    <div id="opponent-human">
-      <p>Enemy Avatar</p>
-      <div class="character">
-        <div class="char-1"><i class="fad fa-alicorn fa-flip-horizontal"></i></div>
-        <div class="char-2"><i class="fad fa-user-cowboy"></i></div>
-      </div>
-      <p>Enemy Mark</p>
-      <div class="mark">
-        <div class="mark-1"><i class="fad fa-meteor"></i></div>
-        <div class="mark-2"></i><i class="fad fa-star-shooting"></i></div>
-      </div>
-    </div>
-
-    <div id="opponent-ai">
-      <p>AI Avatar</p>
-      <div class="alien">
-        <div class="alien-1"><i class="fad fa-pastafarianism"></i></div>
-        <div class="alien-2"><i class="fad fa-alien-monster"></i></div>
-      </div>
-      <p>AI Mark</p>
-      <div class="mark">
-        <div class="mark-1"><i class="fad fa-bacterium"></i></div>
-        <div class="mark-2"><i class="fad fa-virus"></i></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="start-game">
-    <button class="play">Play</button>
+  <div id="game-window">
+    <p>Here will be a grid for the Gameboard...</p>
   </div>
 
   <footer id="footer">
