@@ -3,7 +3,7 @@
   --violet: #A39DD2;
   --black: #19191E;
   --purple: #332453;
-  --blue: #B3D8E6;
+  --blue: #A1D4E8;
   --white: #FFFFFF;
 }
 
@@ -105,18 +105,24 @@
 }
 .andromeda {
   background-image: url('../images/andromeda.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #black-eye {
   background-color: var(--black);
 }
 .black-eye  {
   background-image: url('../images/black-eye.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #fireworks {
   background-color: var(--purple);
 }
 .fireworks {
   background-image: url('../images/fireworks.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 #milky-way {
   border-bottom-left-radius: 5px;
@@ -125,6 +131,8 @@
 }
 .milky-way {
   background-image: url('../images/milky-way.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #footer {
