@@ -38,12 +38,79 @@ const newGame = (() => {
     const gameSelectionWindow = document.querySelector('#game-selection-window');
     const gameWindow = document.querySelector('#game-window');
     playGame.addEventListener('click', () => {
-      gameSelectionWindow.style.display = 'none';
-      gameWindow.style.display = 'block';
+      gameSelectionWindow.className = 'display-none';
+      gameWindow.className = 'display-block';
     });
   };
   selectGameType();
   selectGalaxy();
   startGame();
+  return {};
+})();
+
+const iconsSelection = (() => {
+  const selectAvatars = () => {
+    const avatars = document.querySelectorAll('.character i');
+    avatars.forEach((avatar) => {
+      avatar.addEventListener('click', () => {
+        if (avatar.classList.contains('fa-user-astronaut')) {
+          avatar.classList.add('theme-astronaut');
+          avatars[1].classList.remove('theme-cat');
+        } else if (avatar.classList.contains('fa-cat-space')) {
+          avatar.classList.add('theme-cat');
+          avatars[0].classList.remove('theme-astronaut');
+        } else if (avatar.classList.contains('fa-alicorn')) {
+          avatar.classList.add('theme-alicorn');
+          avatars[3].classList.remove('theme-cowboy');
+        } else if (avatar.classList.contains('fa-user-cowboy')) {
+          avatar.classList.add('theme-cowboy');
+          avatars[2].classList.remove('theme-alicorn');
+        }
+      });
+    });
+  };
+  const selectMarks = () => {
+    const marks = document.querySelectorAll('.mark i');
+    marks.forEach((mark) => {
+      mark.addEventListener('click', () => {
+        if (mark.classList.contains('fa-rocket-launch')) {
+          mark.classList.add('theme-rocket');
+          marks[1].classList.remove('theme-comet');
+        } else if (mark.classList.contains('fa-comet')) {
+          mark.classList.add('theme-comet');
+          marks[0].classList.remove('theme-rocket');
+        } else if (mark.classList.contains('fa-meteor')) {
+          mark.classList.add('theme-meteor');
+          marks[3].classList.remove('theme-star');
+        } else if (mark.classList.contains('fa-star-shooting')) {
+          mark.classList.add('theme-star');
+          marks[2].classList.remove('theme-meteor');
+        }
+      });
+    });
+  };
+  const computerSelection = () => {
+    const aiAvatars = document.querySelectorAll('#enemy-ai .character i');
+    const selectAiAvatar = aiAvatars[Math.floor(Math.random() * aiAvatars.length)];
+    if (selectAiAvatar.classList.contains('fa-pastafarianism')) {
+      selectAiAvatar.classList.add('theme-pastafarianism');
+      aiAvatars[1].classList.remove('theme-alien');
+    } else if (selectAiAvatar.classList.contains('fa-alien-monster')) {
+      selectAiAvatar.classList.add('theme-alien');
+      aiAvatars[0].classList.remove('theme-pastafarianism');
+    }
+    const aiMarks = document.querySelectorAll('#enemy-ai .mark i');
+    const selectAiMark = aiMarks[Math.floor(Math.random() * aiMarks.length)];
+    if (selectAiMark.classList.contains('fa-bacterium')) {
+      selectAiMark.classList.add('theme-bacterium');
+      aiMarks[1].classList.remove('theme-virus');
+    } else if (selectAiMark.classList.contains('fa-virus')) {
+      selectAiMark.classList.add('theme-virus');
+      aiAvatars[0].classList.remove('theme-bacterium');
+    }
+  };
+  selectAvatars();
+  selectMarks();
+  computerSelection();
   return {};
 })();

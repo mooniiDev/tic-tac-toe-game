@@ -5,6 +5,76 @@
   --purple: #332453;
   --blue: #A1D4E8;
   --white: #FFFFFF;
+  --dark-blue: #3F548D;
+  --grey: #3D3D3D;
+  --pink: #F5B1CB;
+  --orange : #D07C7C;
+  --green: #52B69A;
+  --yellow: #FFE3A1;
+  --red: #D04456;
+  --cream: #FFDDD2;
+}
+
+/* ICONS STYLING */
+.theme-astronaut {
+  --fa-primary-color: var(--dark-blue);
+  --fa-secondary-color: var(--grey);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-cat {
+  --fa-primary-color: var(--grey);
+  --fa-secondary-color: var(--white);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-rocket {
+  --fa-primary-color: var(--green);
+  --fa-secondary-color: var(--yellow);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-comet {
+  --fa-primary-color: var(--yellow);
+  --fa-secondary-color: var(--orange);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-alicorn {
+  --fa-primary-color: var(--pink);
+  --fa-secondary-color: var(--green);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-cowboy {
+  --fa-primary-color: var(--orange);
+  --fa-secondary-color: var(--cream);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-meteor {
+  --fa-primary-color: var(--cream);
+  --fa-secondary-color: var(--red);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-star {
+  --fa-primary-color: var(--yellow);
+  --fa-secondary-color: var(--dark-blue);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-pastafarianism {
+  --fa-primary-color: var(--grey);
+  --fa-secondary-color: var(--cream);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-alien {
+  --fa-primary-color: var(--dark-blue);
+  --fa-secondary-color: var(--green);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-bacterium {
+  --fa-primary-color: var(--dark-blue);
+  --fa-secondary-color: var(--pink);
+  --fa-secondary-opacity: 1.0;
+}
+.theme-virus {
+  --fa-primary-color: var(--red);
+  --fa-secondary-color: var(--yellow);
+  --fa-secondary-opacity: 1.0;
 }
 
 /* ALIGNMENT */
@@ -35,7 +105,6 @@
   padding: 10px;
 }
 #game-window {
-  display: none;
   text-align: center;
 }
 
