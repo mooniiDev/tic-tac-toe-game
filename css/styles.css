@@ -77,22 +77,37 @@
   --fa-secondary-opacity: 1.0;
 }
 
+/* DISPLAYING */
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
+}
+
 /* ALIGNMENT */
 #header,
 #game-options,
 #start-game,
+#player-stats,
+#enemy-stats,
+#ai-stats,
 #footer {
   text-align: center;
 }
 #player,
+#player-stats,
 #scenes,
 #enemy-human,
-#enemy-ai {
+#enemy-stats,
+#enemy-ai,
+#ai-stats {
   margin: 20px;
   width: 180px;
 }
 #game-selection,
 #game-options,
+.game,
 .character,
 .mark,
 .alien  {
@@ -103,17 +118,6 @@
 .mark div,
 .alien div {
   padding: 10px;
-}
-#game-window {
-  text-align: center;
-}
-
-/* DISPLAYING */
-.display-block {
-  display: block;
-}
-.display-none {
-  display: none;
 }
 
 #body {
@@ -136,7 +140,7 @@
 }
 
 #game-selection button,
-.play {
+.play-btn {
   margin: 20px;
   padding: 10px 40px;
   background-color: transparent;
@@ -149,8 +153,8 @@
 }
 #game-selection button:hover,
 #game-selection button:focus,
-.play:hover,
-.play:focus {
+.play-btn:hover,
+.play-btn:focus {
   cursor: pointer;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
   transition: 0.2s;
@@ -204,6 +208,27 @@
   background-repeat: no-repeat;
 }
 
+#game-window {
+  margin-top: 100px;
+}
+#gameboard {
+  display: grid;
+  grid-gap: 2px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
+}
+#gameboard > div {
+  background-color: #FFF;
+}
+.grid-3x3 {
+  grid-template-columns: repeat(3, auto);
+}
+.grid-3x3 > div {
+  height: 100px;
+  width: 100px;
+}
+
 #footer {
   font-size: 15px;
 }
@@ -216,6 +241,6 @@
 }
 #footer a:hover,
 #footer a:focus {
-  color: var(--purple);
+  color: var(--dark-blue);
   transition: 0.2s;
 }
