@@ -25,7 +25,9 @@ const newGame = (() => {
         } else if (avatar.classList.contains('fa-cat-space')) {
           avatar.classList.add('theme-cat');
           avatars[0].classList.remove('theme-astronaut');
-        } else if (avatar.classList.contains('fa-alicorn')) {
+        }
+
+        if (avatar.classList.contains('fa-alicorn')) {
           avatar.classList.add('theme-alicorn');
           avatars[3].classList.remove('theme-cowboy');
         } else if (avatar.classList.contains('fa-user-cowboy')) {
@@ -94,6 +96,7 @@ const newGame = (() => {
     const gameSelectionWindow = document.querySelector('#game-selection-window');
     const gameWindow = document.querySelector('#game-window');
     playBtn.addEventListener('click', () => {
+      // validateSelection();
       gameSelectionWindow.className = 'display-none';
       gameWindow.className = 'display-block';
     });

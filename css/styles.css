@@ -92,8 +92,12 @@
 #player-stats,
 #enemy-stats,
 #ai-stats,
+#end-game-buttons,
 #footer {
   text-align: center;
+}
+#start-game {
+  margin-bottom: 10px;
 }
 #player,
 #player-stats,
@@ -102,8 +106,8 @@
 #enemy-stats,
 #enemy-ai,
 #ai-stats {
-  margin: 20px;
-  width: 180px;
+  margin: 20px 30px;
+  width: 200px;
 }
 #game-selection,
 #game-options,
@@ -113,6 +117,9 @@
 .alien  {
   display: flex;
   justify-content: center;
+}
+#game-options {
+  height: 364px;
 }
 .character div,
 .mark div,
@@ -140,7 +147,8 @@
 }
 
 #game-selection button,
-.play-btn {
+.play-btn,
+#end-game-buttons button {
   margin: 20px;
   padding: 10px 40px;
   background-color: transparent;
@@ -151,10 +159,16 @@
   transition: 0.2s;
   outline: none;
 }
+#end-game-buttons button {
+  margin: 40px 20px;
+  padding: 10px;
+}
 #game-selection button:hover,
 #game-selection button:focus,
 .play-btn:hover,
-.play-btn:focus {
+.play-btn:focus,
+#end-game-buttons button:hover,
+#end-game-buttons button:focus {
   cursor: pointer;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
   transition: 0.2s;
@@ -167,9 +181,28 @@
 .galaxies div:hover {
   cursor: pointer;
 }
+#game-options input {
+  width: 200px;
+  height: 27px;
+  margin: 20px 0 11px 0;
+  background-color: transparent;
+  text-align: center;
+  color: var(--white);
+  border: none;
+  box-shadow: 0px 6px 2px -5px var(--white);
+  outline: none;
+}
+#game-options input:focus {
+  box-shadow: 0px 6px 2px -5px var(--dark-blue);
+}
+.ai-name {
+  margin-bottom: 31px;
+  height: 27px;
+  box-shadow: 0px 6px 2px -5px var(--white);
+}
 
 .galaxies div {
-  padding: 14px 20px;
+  padding: 20px;
 }
 #andromeda {
   border-top-left-radius: 5px;

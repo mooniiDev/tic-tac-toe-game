@@ -22,87 +22,98 @@
     <p>⭒◦∘space edition∘◦⭒</p>
   </header>
 
-  <div id="game-selection-window">
-    <div id="game-selection">
-      <button type="button" class="pvp">PvP</button>
-      <button type="button" class="pve">PvE</button>
+  <main>
+    <div id="game-selection-window">
+
+      <div id="game-selection">
+        <button type="button" class="pvp">PvP</button>
+        <button type="button" class="pve">PvE</button>
+      </div>
+
+      <div id="game-options">
+        <div id="player">
+          <input type="text" value="Your Name" onfocus="this.value=''" autocomplete="off">
+          <p>Your Avatar</p>
+          <div class="character player">
+            <div><i class="fad fa-user-astronaut"></i></div>
+            <div><i class="fad fa-cat-space"></i></div>
+          </div>
+          <p>Your Mark</p>
+          <div class="mark">
+            <div><i class="fad fa-rocket-launch"></i></div>
+            <div><i class="fad fa-comet fa-flip-horizontal"></i></div>
+          </div>
+        </div>
+
+        <div id="scenes">
+          <div class="galaxies">
+            <p>Galaxies</p>
+            <div id="andromeda" class="galaxy">Andromeda</div>
+            <div id="black-eye" class="galaxy">Black Eye</div>
+            <div id="fireworks" class="galaxy">Fireworks</div>
+            <div id="milky-way" class="galaxy">Milky Way</div>
+          </div>
+        </div>
+
+        <div id="enemy-human">
+          <input type="text" value="Enemy Name" onfocus="this.value=''" autocomplete="off">
+          <p>Enemy Avatar</p>
+          <div class="character">
+            <div><i class="fad fa-alicorn fa-flip-horizontal"></i></div>
+            <div><i class="fad fa-user-cowboy"></i></div>
+          </div>
+          <p>Enemy Mark</p>
+          <div class="mark">
+            <div><i class="fad fa-meteor"></i></div>
+            <div><i class="fad fa-star-shooting"></i></div>
+          </div>
+        </div>
+
+        <div id="enemy-ai" class="display-none">
+          <p class="ai-name">AI</p>
+          <p>AI Avatar</p>
+          <div class="character">
+            <div><i class="fad fa-pastafarianism"></i></div>
+            <div><i class="fad fa-alien-monster"></i></div>
+          </div>
+          <p>AI Mark</p>
+          <div class="mark">
+            <div><i class="fad fa-bacterium"></i></div>
+            <div><i class="fad fa-virus"></i></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="start-game">
+        <button class="play-btn">Play</button>
+      </div>
     </div>
 
-    <div id="game-options">
-      <div id="player">
-        <p>Your Avatar</p>
-        <div class="character">
-          <div><i class="fad fa-user-astronaut"></i></div>
-          <div><i class="fad fa-cat-space"></i></div>
+    <div id="game-window" class="display-none">
+      <div class="game">
+        <div id="player-stats">
+          <div>You</div>
+          <div>Your Score</div>
         </div>
-        <p>Your Mark</p>
-        <div class="mark">
-          <div><i class="fad fa-rocket-launch"></i></div>
-          <div><i class="fad fa-comet fa-flip-horizontal"></i></div>
+        <div id="gameboard">
+
+        </div>
+        <div id="enemy-stats">
+          <div>Enemy</div>
+          <div>Enemy Score</div>
+        </div>
+        <div id="ai-stats" class="display-none">
+          <div>AI</div>
+          <div>AI Score</div>
         </div>
       </div>
 
-      <div id="scenes">
-        <div class="galaxies">
-          <p>Galaxies</p>
-          <div id="andromeda" class="galaxy">Andromeda</div>
-          <div id="black-eye" class="galaxy">Black Eye</div>
-          <div id="fireworks" class="galaxy">Fireworks</div>
-          <div id="milky-way" class="galaxy">Milky Way</div>
-        </div>
-      </div>
-
-      <div id="enemy-human">
-        <p>Enemy Avatar</p>
-        <div class="character">
-          <div><i class="fad fa-alicorn fa-flip-horizontal"></i></div>
-          <div><i class="fad fa-user-cowboy"></i></div>
-        </div>
-        <p>Enemy Mark</p>
-        <div class="mark">
-          <div><i class="fad fa-meteor"></i></div>
-          <div><i class="fad fa-star-shooting"></i></div>
-        </div>
-      </div>
-
-      <div id="enemy-ai" class="display-none">
-        <p>AI Avatar</p>
-        <div class="character">
-          <div><i class="fad fa-pastafarianism"></i></div>
-          <div><i class="fad fa-alien-monster"></i></div>
-        </div>
-        <p>AI Mark</p>
-        <div class="mark">
-          <div><i class="fad fa-bacterium"></i></div>
-          <div><i class="fad fa-virus"></i></div>
-        </div>
+      <div id="end-game-buttons">
+        <button type="button" class="new-game">New Game</button>
+        <button type="button" class="next-round">Next Round</button>
       </div>
     </div>
-
-    <div id="start-game">
-      <button class="play-btn">Play</button>
-    </div>
-  </div>
-
-  <div id="game-window" class="display-none">
-    <div class="game">
-      <div id="player-stats">
-        <div>You</div>
-        <div>Your Score</div>
-      </div>
-      <div id="gameboard">
-
-      </div>
-      <div id="enemy-stats">
-        <div>Enemy</div>
-        <div>Enemy Score</div>
-      </div>
-      <div id="ai-stats" class="display-none">
-        <div>AI</div>
-        <div>AI Score</div>
-      </div>
-    </div>
-  </div>
+  </main>
 
   <footer id="footer">
     <p id="crafted-by"> ☽ Crafted by
