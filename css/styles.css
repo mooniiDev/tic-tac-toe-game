@@ -77,6 +77,15 @@
   --fa-secondary-opacity: 1.0;
 }
 
+/* ERRORS STYLING */
+.input-error {
+  box-shadow: 0px 6px 2px -5px var(--pink) !important;
+}
+.avatar-error,
+.mark-error {
+  color: var(--pink);
+}
+
 /* DISPLAYING */
 .display-block {
   display: block;
@@ -135,6 +144,7 @@
 .body-bg {
   background-image: url('../images/sky.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 #header h1 {
@@ -175,7 +185,7 @@
   transition: 0.2s;
 }
 
-/* INPUTS AND ICONS STYLING */
+/* INPUTS & ICONS STYLING */
 #game-options input {
   width: 200px;
   height: 27px;
