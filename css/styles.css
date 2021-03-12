@@ -3,7 +3,7 @@
   --violet: #A39DD2;
   --black: #19191E;
   --purple: #332453;
-  --blue: #A1D4E8;
+  --blue: #B7DBE6;
   --white: #FFFFFF;
   --dark-blue: #3F548D;
   --grey: #3D3D3D;
@@ -102,18 +102,18 @@
 #player,
 #player-stats,
 #scenes,
-#enemy-human,
+#player-enemy,
 #enemy-stats,
-#enemy-ai,
+#player-ai,
 #ai-stats {
   margin: 20px 30px;
   width: 200px;
 }
-#game-selection,
+#game-type,
 #game-options,
 .game,
-.character,
-.mark,
+.player,
+.marks,
 .alien  {
   display: flex;
   justify-content: center;
@@ -121,8 +121,8 @@
 #game-options {
   height: 364px;
 }
-.character div,
-.mark div,
+.player div,
+.marks div,
 .alien div {
   padding: 10px;
 }
@@ -146,7 +146,8 @@
   font-size: 15px;
 }
 
-#game-selection button,
+/* BUTTONS STYLING */
+#game-type button,
 .play-btn,
 #end-game-buttons button {
   margin: 20px;
@@ -163,8 +164,8 @@
   margin: 40px 20px;
   padding: 10px;
 }
-#game-selection button:hover,
-#game-selection button:focus,
+#game-type button:hover,
+#game-type button:focus,
 .play-btn:hover,
 .play-btn:focus,
 #end-game-buttons button:hover,
@@ -174,13 +175,7 @@
   transition: 0.2s;
 }
 
-#game-options i {
-  font-size: 50px;
-}
-#game-options i:hover,
-.galaxies div:hover {
-  cursor: pointer;
-}
+/* INPUTS AND ICONS STYLING */
 #game-options input {
   width: 200px;
   height: 27px;
@@ -195,12 +190,20 @@
 #game-options input:focus {
   box-shadow: 0px 6px 2px -5px var(--dark-blue);
 }
+#game-options i {
+  font-size: 50px;
+}
+#game-options i:hover,
+.galaxies div:hover {
+  cursor: pointer;
+}
 .ai-name {
   margin-bottom: 31px;
   height: 27px;
   box-shadow: 0px 6px 2px -5px var(--white);
 }
 
+/* GALAXIES STYLING */
 .galaxies div {
   padding: 20px;
 }
@@ -241,6 +244,7 @@
   background-repeat: no-repeat;
 }
 
+/* GAMEBOARD WINDOW STYLING */
 #game-window {
   margin-top: 100px;
 }

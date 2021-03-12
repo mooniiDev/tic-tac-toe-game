@@ -1,8 +1,9 @@
 const newGame = (() => {
+  // GAME TYPE SELECTION
   const selectGameType = () => {
-    const gameSelection = document.querySelectorAll('#game-selection button');
-    const pvpMode = document.querySelector('#enemy-human');
-    const pveMode = document.querySelector('#enemy-ai');
+    const gameSelection = document.querySelectorAll('#game-type button');
+    const pvpMode = document.querySelector('#player-enemy');
+    const pveMode = document.querySelector('#player-ai');
     gameSelection.forEach((btn) => {
       btn.addEventListener('click', () => {
         if (btn.classList.contains('pvp')) {
@@ -15,48 +16,69 @@ const newGame = (() => {
       });
     });
   };
-  const selectAvatar = () => {
-    const avatars = document.querySelectorAll('.character i');
-    avatars.forEach((avatar) => {
-      avatar.addEventListener('click', () => {
-        if (avatar.classList.contains('fa-user-astronaut')) {
-          avatar.classList.add('theme-astronaut');
-          avatars[1].classList.remove('theme-cat');
-        } else if (avatar.classList.contains('fa-cat-space')) {
-          avatar.classList.add('theme-cat');
-          avatars[0].classList.remove('theme-astronaut');
-        }
 
-        if (avatar.classList.contains('fa-alicorn')) {
-          avatar.classList.add('theme-alicorn');
-          avatars[3].classList.remove('theme-cowboy');
-        } else if (avatar.classList.contains('fa-user-cowboy')) {
-          avatar.classList.add('theme-cowboy');
-          avatars[2].classList.remove('theme-alicorn');
-        }
-      });
+  // PLAYER AVATAR/MARK & ENEMY AVATAR/MARK SELECTIONS
+  const selectIcons = () => {
+    const gameOptionsWindow = document.querySelector('#game-options');
+    const playerIcons = document.querySelectorAll('#player i');
+    const enemyIcons = document.querySelectorAll('#player-enemy i');
+    gameOptionsWindow.addEventListener('click', (event) => {
+      const { target } = event;
+      // PLAYER AVATAR SELECTION
+      if (target.classList.contains('fa-user-astronaut')) {
+        target.classList.add('theme-astronaut');
+        playerIcons[1].classList.remove('theme-cat');
+      } else if (target.classList.contains('fa-cat-space')) {
+        target.classList.add('theme-cat');
+        playerIcons[0].classList.remove('theme-astronaut');
+      }
+      // PLAYER MARK SELECTION
+      if (target.classList.contains('fa-rocket-launch')) {
+        target.classList.add('theme-rocket');
+        playerIcons[3].classList.remove('theme-comet');
+      } else if (target.classList.contains('fa-comet')) {
+        target.classList.add('theme-comet');
+        playerIcons[2].classList.remove('theme-rocket');
+      }
+      // ENEMY AVATAR SELECTION
+      if (target.classList.contains('fa-alicorn')) {
+        target.classList.add('theme-alicorn');
+        enemyIcons[1].classList.remove('theme-cowboy');
+      } else if (target.classList.contains('fa-user-cowboy')) {
+        target.classList.add('theme-cowboy');
+        enemyIcons[0].classList.remove('theme-alicorn');
+      }
+      // ENEMY MARK SELECTION
+      if (target.classList.contains('fa-meteor')) {
+        target.classList.add('theme-meteor');
+        enemyIcons[3].classList.remove('theme-star');
+      } else if (target.classList.contains('fa-star-shooting')) {
+        target.classList.add('theme-star');
+        enemyIcons[2].classList.remove('theme-meteor');
+      }
     });
   };
-  const selectMark = () => {
-    const marks = document.querySelectorAll('.mark i');
-    marks.forEach((mark) => {
-      mark.addEventListener('click', () => {
-        if (mark.classList.contains('fa-rocket-launch')) {
-          mark.classList.add('theme-rocket');
-          marks[1].classList.remove('theme-comet');
-        } else if (mark.classList.contains('fa-comet')) {
-          mark.classList.add('theme-comet');
-          marks[0].classList.remove('theme-rocket');
-        } else if (mark.classList.contains('fa-meteor')) {
-          mark.classList.add('theme-meteor');
-          marks[3].classList.remove('theme-star');
-        } else if (mark.classList.contains('fa-star-shooting')) {
-          mark.classList.add('theme-star');
-          marks[2].classList.remove('theme-meteor');
-        }
-      });
-    });
+  selectIcons();
+
+  // COMPUTER AVATAR AND MARK SELECTION
+  const computerSelection = () => {
+    const aiAvatars = document.querySelectorAll('#player-ai .player i');
+    const selectAiAvatar = aiAvatars[Math.floor(Math.random() * aiAvatars.length)];
+    if (selectAiAvatar.classList.contains('fa-pastafarianism')) {
+      selectAiAvatar.classList.add('theme-pastafarianism');
+    } else if (selectAiAvatar.classList.contains('fa-alien-monster')) {
+      selectAiAvatar.classList.add('theme-alien');
+    }
+    const aiMarks = document.querySelectorAll('#player-ai .marks i');
+    const selectAiMark = aiMarks[Math.floor(Math.random() * aiMarks.length)];
+    if (selectAiMark.classList.contains('fa-bacterium')) {
+      selectAiMark.classList.add('theme-bacterium');
+    } else if (selectAiMark.classList.contains('fa-virus')) {
+      selectAiMark.classList.add('theme-virus');
+    }
   };
+
+  // GALAXY SELECTION
   const selectGalaxy = () => {
     const galaxies = document.querySelectorAll('.galaxy');
     const gameBody = document.querySelector('#body');
@@ -75,38 +97,9 @@ const newGame = (() => {
       });
     });
   };
-  const computerSelection = () => {
-    const aiAvatars = document.querySelectorAll('#enemy-ai .character i');
-    const selectAiAvatar = aiAvatars[Math.floor(Math.random() * aiAvatars.length)];
-    if (selectAiAvatar.classList.contains('fa-pastafarianism')) {
-      selectAiAvatar.classList.add('theme-pastafarianism');
-    } else if (selectAiAvatar.classList.contains('fa-alien-monster')) {
-      selectAiAvatar.classList.add('theme-alien');
-    }
-    const aiMarks = document.querySelectorAll('#enemy-ai .mark i');
-    const selectAiMark = aiMarks[Math.floor(Math.random() * aiMarks.length)];
-    if (selectAiMark.classList.contains('fa-bacterium')) {
-      selectAiMark.classList.add('theme-bacterium');
-    } else if (selectAiMark.classList.contains('fa-virus')) {
-      selectAiMark.classList.add('theme-virus');
-    }
-  };
-  const startPlay = () => {
-    const playBtn = document.querySelector('.play-btn');
-    const gameSelectionWindow = document.querySelector('#game-selection-window');
-    const gameWindow = document.querySelector('#game-window');
-    playBtn.addEventListener('click', () => {
-      // validateSelection();
-      gameSelectionWindow.className = 'display-none';
-      gameWindow.className = 'display-block';
-    });
-  };
   selectGameType();
-  selectAvatar();
-  selectMark();
-  selectGalaxy();
   computerSelection();
-  startPlay();
+  selectGalaxy();
   return {};
 })();
 
