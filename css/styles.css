@@ -98,42 +98,48 @@
 #header,
 #game-options,
 #start-game,
-#player-stats,
-#enemy-stats,
-#ai-stats,
+#player-info,
+#enemy-info,
+#ai-info,
 #end-game-buttons,
 #footer {
   text-align: center;
 }
-#start-game {
-  margin-bottom: 10px;
-}
-#player,
-#player-stats,
-#scenes,
-#player-enemy,
-#enemy-stats,
-#player-ai,
-#ai-stats {
-  margin: 20px 30px;
-  width: 200px;
-}
 #game-type,
 #game-options,
 .game,
-.player,
-.marks,
-.alien  {
+.player-avatars,
+.player-marks,
+.enemy-avatars,
+.enemy-marks,
+.ai-avatars,
+.ai-marks {
   display: flex;
   justify-content: center;
 }
 #game-options {
   height: 364px;
 }
-.player div,
-.marks div,
-.alien div {
+.player-avatars div,
+.player-marks div,
+.enemy-avatars div,
+.enemy-marks div,
+.ai-avatars div,
+.ai-marks div {
   padding: 10px;
+}
+#start-game {
+  margin-bottom: 10px;
+}
+#player,
+#player-info,
+#scenes,
+#player-enemy,
+#enemy-info,
+#player-ai,
+#ai-info {
+  margin: 20px 30px;
+  width: 200px;
 }
 
 #body {
