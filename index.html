@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="images" href="images/star-favicon.png">
   <link type="text/css" rel="stylesheet" href="css/modern-normalize.min.css">
   <link type="text/css" rel="stylesheet" href="css/styles.css">
   <link href="css/fontawesome.min.css" rel="stylesheet">
@@ -34,7 +35,7 @@
       <div id="game-options">
         <!-- PLAYER SELECTIONS -->
         <div id="player">
-          <input type="text" value="Your Name" onfocus="this.value=''" autocomplete="off">
+          <input type="text" value="Your Name" class="player-name" onfocus="this.value=''" autocomplete="off">
           <p class="player-avatar-title">Your Avatar</p>
           <div class="player-avatars">
             <div><i class="player-icon fad fa-user-astronaut"></i></div>
@@ -58,7 +59,7 @@
         </div>
         <!-- ENEMY SELECTIONS -->
         <div id="player-enemy">
-          <input type="text" value="Enemy Name" onfocus="this.value=''" autocomplete="off">
+          <input type="text" value="Enemy Name" class="player-enemy-name" onfocus="this.value=''" autocomplete="off">
           <p class="enemy-avatar-title">Enemy Avatar</p>
           <div class="enemy-avatars">
             <div><i class="fad fa-alicorn fa-flip-horizontal enemy-icon"></i></div>
@@ -72,13 +73,13 @@
         </div>
         <!-- COMPUTER SELECTIONS -->
         <div id="player-ai" class="display-none">
-          <p class="ai-name">Alien</p>
-          <p>Alien Avatar</p>
+          <p class="ai-name">Alienzo</p>
+          <p>Alienzo Avatar</p>
           <div class="ai-avatars">
             <div><i class="alien-icon fad fa-pastafarianism"></i></div>
             <div><i class="alien-icon fad fa-alien-monster"></i></div>
           </div>
-          <p>Alien Mark</p>
+          <p>Alienzo Mark</p>
           <div class="ai-marks">
             <div><i class="alien-mark-icon fad fa-bacterium"></i></div>
             <div><i class="alien-mark-icon fad fa-virus"></i></div>
@@ -96,7 +97,9 @@
       <div class="game">
         <!-- PLAYER INFORMATION -->
         <div id="player-info">
-          <div>You</div>
+          <div>Your Name</div>
+          <div>Your Avatar</div>
+          <div>Your Mark</div>
           <div>Your Score</div>
         </div>
         <div id="gameboard">
@@ -104,13 +107,17 @@
         </div>
         <!-- ENEMY INFORMATION -->
         <div id="enemy-info">
-          <div>Enemy</div>
+          <div>Enemy Name</div>
+          <div>Enemy Avatar</div>
+          <div>Enemy Mark</div>
           <div>Enemy Score</div>
         </div>
         <!-- COMPUTER INFORMATION -->
         <div id="ai-info" class="display-none">
-          <div>Alien</div>
-          <div>Alien Score</div>
+          <div>Alienzo Name</div>
+          <div>Alienzo Avatar</div>
+          <div>Alienzo Mark</div>
+          <div>Alienzo Score</div>
         </div>
       </div>
 
