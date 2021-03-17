@@ -100,7 +100,7 @@
 #start-game,
 #player-info,
 #enemy-info,
-#ai-info,
+#computer-info,
 #end-game-buttons,
 #footer {
   text-align: center;
@@ -112,8 +112,8 @@
 .player-marks,
 .enemy-avatars,
 .enemy-marks,
-.ai-avatars,
-.ai-marks {
+.computer-avatars,
+.computer-marks {
   display: flex;
   justify-content: center;
 }
@@ -124,21 +124,24 @@
 .player-marks div,
 .enemy-avatars div,
 .enemy-marks div,
-.ai-avatars div,
-.ai-marks div {
+.computer-avatars div,
+.computer-marks div {
   padding: 10px;
 }
 #start-game {
   margin-bottom: 10px;
 }
 #player,
-#player-info,
 #scenes,
 #player-enemy,
-#enemy-info,
-#player-ai,
-#ai-info {
+#player-computer {
   margin: 20px 30px;
+  width: 200px;
+}
+#player-info,
+#enemy-info,
+#computer-info {
+  margin: 0 30px;
   width: 200px;
 }
 
@@ -213,7 +216,7 @@
 .galaxies div:hover {
   cursor: pointer;
 }
-.ai-name {
+.computer-name {
   margin-bottom: 31px;
   height: 27px;
   box-shadow: 0px 6px 2px -5px var(--white);
@@ -260,13 +263,14 @@
   background-repeat: no-repeat;
 }
 
-/* GAMEBOARD WINDOW STYLING */
+/* PLAY GAME WINDOW STYLING */
 #game-window {
   margin-top: 100px;
 }
 #gameboard {
   display: grid;
   grid-gap: 2px;
+  height: 300px;
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
@@ -280,6 +284,16 @@
 .grid-3x3 > div {
   height: 100px;
   width: 100px;
+}
+
+/* PLAY GAME WINDOW ICONS STYLING */
+.player-game-avatar,
+.player-game-mark,
+.enemy-game-avatar,
+.enemy-game-mark,
+.computer-game-avatar,
+.computer-game-mark {
+  font-size: 50px;
 }
 
 #footer {

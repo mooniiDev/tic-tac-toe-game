@@ -1,4 +1,3 @@
-// CREATE PLAYERS
 function createPlayer(name, avatar, mark, score) {
   return {
     name,
@@ -8,7 +7,7 @@ function createPlayer(name, avatar, mark, score) {
   };
 }
 
-// GAME SELECTION WINDOW
+// GAME SELECTION MODULE
 const newGame = (() => {
   // PLAYER INFO
   const playerNameInput = document.querySelector('.player-name');
@@ -16,6 +15,7 @@ const newGame = (() => {
   const playerAvatars = document.querySelectorAll('.player-avatars i');
   const playerMarksTitle = document.querySelector('.player-mark-title');
   const playerMarks = document.querySelectorAll('.player-marks i');
+  let player;
   let playerName;
   let playerSelectedAvatar;
   let playerSelectedMark;
@@ -25,23 +25,24 @@ const newGame = (() => {
   const enemyAvatars = document.querySelectorAll('.enemy-avatars i');
   const enemyMarksTitle = document.querySelector('.enemy-mark-title');
   const enemyMarks = document.querySelectorAll('.enemy-marks i');
+  let enemy;
   let enemyName;
   let enemySelectedAvatar;
   let enemySelectedMark;
   // COMPUTER INFO
-  const aiAvatars = document.querySelectorAll('.alien-icon');
-  const selectAiAvatar = aiAvatars[Math.floor(Math.random() * aiAvatars.length)];
-  const aiMarks = document.querySelectorAll('.alien-mark-icon');
-  const selectAiMark = aiMarks[Math.floor(Math.random() * aiMarks.length)];
-  const aiName = 'Alienzo';
-  let aiSelectedAvatar;
-  let aiSelectedMark;
+  const computerAvatars = document.querySelectorAll('.alien-icon');
+  const selectComputerAvatar = computerAvatars[Math.floor(Math.random() * computerAvatars.length)];
+  const computerMarks = document.querySelectorAll('.alien-mark-icon');
+  const selectComputerMark = computerMarks[Math.floor(Math.random() * computerMarks.length)];
+  const computerName = 'Alienzo';
+  let computer;
+  let computerSelectedAvatar;
+  let computerSelectedMark;
   // GAME MODES
   const pvpMode = document.querySelector('#player-enemy');
-  const pveMode = document.querySelector('#player-ai');
+  const pveMode = document.querySelector('#player-computer');
   let gameMode = 'pvp';
 
-  // GAME TYPE SELECTION
   const selectGameType = (target) => {
     if (target.classList.contains('pvp')) {
       pvpMode.className = 'display-block';
@@ -54,7 +55,6 @@ const newGame = (() => {
     }
   };
 
-  // PLAYER AVATAR & MARK SELECTION
   const selectPlayerIcons = (target) => {
     const playerIcons = document.querySelectorAll('#player i');
     // AVATAR SELECTION
@@ -79,7 +79,6 @@ const newGame = (() => {
     }
   };
 
-  // ENEMY AVATAR & MARK SELECTION
   const selectEnemyIcons = (target) => {
     const enemyIcons = document.querySelectorAll('#player-enemy i');
     // AVATAR SELECTION
@@ -104,23 +103,21 @@ const newGame = (() => {
     }
   };
 
-  // COMPUTER AVATAR & MARK SELECTIONS
-  const computerSelection = () => {
-    if (selectAiAvatar.classList.contains('fa-pastafarianism')) {
-      selectAiAvatar.classList.add('theme-pastafarianism');
-    } else if (selectAiAvatar.classList.contains('fa-alien-monster')) {
-      selectAiAvatar.classList.add('theme-alien');
+  const selectComputerIcons = () => {
+    if (selectComputerAvatar.classList.contains('fa-pastafarianism')) {
+      selectComputerAvatar.classList.add('theme-pastafarianism');
+    } else if (selectComputerAvatar.classList.contains('fa-alien-monster')) {
+      selectComputerAvatar.classList.add('theme-alien');
     }
-    aiSelectedAvatar = selectAiAvatar;
-    if (selectAiMark.classList.contains('fa-bacterium')) {
-      selectAiMark.classList.add('theme-bacterium');
-    } else if (selectAiMark.classList.contains('fa-virus')) {
-      selectAiMark.classList.add('theme-virus');
+    computerSelectedAvatar = selectComputerAvatar;
+    if (selectComputerMark.classList.contains('fa-bacterium')) {
+      selectComputerMark.classList.add('theme-bacterium');
+    } else if (selectComputerMark.classList.contains('fa-virus')) {
+      selectComputerMark.classList.add('theme-virus');
     }
-    aiSelectedMark = selectAiMark;
+    computerSelectedMark = selectComputerMark;
   };
 
-  // GALAXY SELECTIONS
   const selectGalaxy = (target) => {
     const gameBody = document.querySelector('#body');
     gameBody.classList.remove('body-bg', 'andromeda', 'black-eye', 'fireworks', 'milky-way');
@@ -135,7 +132,6 @@ const newGame = (() => {
     }
   };
 
-  // SELECTIONS VALIDATION
   const validateSelections = () => {
     // REMOVE VALIDATION ERRORS
     playerNameInput.classList.remove('input-error');
@@ -147,6 +143,8 @@ const newGame = (() => {
     // PLAYER NAME, AVATAR & MARK VALIDATIONS
     if (playerNameInput.value === '' || playerNameInput.value === 'Your Name') {
       playerNameInput.classList.add('input-error');
+    } else {
+      playerName = playerNameInput.value;
     }
     if (!playerAvatars[0].classList.contains('theme-astronaut')
       && !playerAvatars[1].classList.contains('theme-cat')) {
@@ -157,8 +155,8 @@ const newGame = (() => {
       playerMarksTitle.classList.add('mark-error');
     }
     // ENEMY NAME, AVATAR & MARK VALIDATIONS IF PVP MODE IS ACTIVE
-    const computer = document.querySelector('#player-ai');
-    if (computer.classList.contains('display-none')) {
+    const computerBlock = document.querySelector('#player-computer');
+    if (computerBlock.classList.contains('display-none')) {
       if (enemyNameInput.value === '' || enemyNameInput.value === 'Enemy Name') {
         enemyNameInput.classList.add('input-error');
       } else {
@@ -189,7 +187,57 @@ const newGame = (() => {
     return false;
   };
 
-  // LISTEN CLICKS
+  // CREATE PLAYER & ENEMY/COMPUTER OBJECTS + SHOW THEIR INFORMATION IN GAME PLAYING WINDOW
+  const createPlayers = () => {
+    // PLAYER
+    player = createPlayer(playerName, playerSelectedAvatar, playerSelectedMark, 0);
+    const playerGameName = document.querySelector('.player-game-name');
+    const playerAvatarTitle = document.querySelector('.your-avatar');
+    const playerGameAvatar = document.querySelector('.player-game-avatar');
+    const playerMarkTitle = document.querySelector('.your-mark');
+    const playerGameMark = document.querySelector('.player-game-mark');
+    const playerScoreTitle = document.querySelector('.your-score');
+    const playerGameScore = document.querySelector('.player-game-score');
+    playerGameName.textContent = player.name;
+    playerAvatarTitle.textContent = `${player.name} Avatar`;
+    playerGameAvatar.appendChild(playerSelectedAvatar);
+    playerMarkTitle.textContent = `${player.name} Mark`;
+    playerGameMark.appendChild(playerSelectedMark);
+    playerScoreTitle.textContent = `${player.name} Score`;
+    playerGameScore.textContent = player.score;
+    if (gameMode === 'pvp') {
+      // ENEMY
+      enemy = createPlayer(enemyName, enemySelectedAvatar, enemySelectedMark, 0);
+      const enemyGameName = document.querySelector('.enemy-game-name');
+      const enemyAvatarTitle = document.querySelector('.enemy-avatar');
+      const enemyGameAvatar = document.querySelector('.enemy-game-avatar');
+      const enemyMarkTitle = document.querySelector('.enemy-mark');
+      const enemyGameMark = document.querySelector('.enemy-game-mark');
+      const enemyScoreTitle = document.querySelector('.enemy-score');
+      const enemyGameScore = document.querySelector('.enemy-game-score');
+      enemyGameName.textContent = enemy.name;
+      enemyAvatarTitle.textContent = `${enemy.name} Avatar`;
+      enemyGameAvatar.appendChild(enemySelectedAvatar);
+      enemyMarkTitle.textContent = `${enemy.name} Mark`;
+      enemyGameMark.appendChild(enemySelectedMark);
+      enemyScoreTitle.textContent = `${enemy.name} Score`;
+      enemyGameScore.textContent = enemy.score;
+    } else if (gameMode === 'pve') {
+      // COMPUTER
+      computer = createPlayer(computerName, computerSelectedAvatar, computerSelectedMark, 0);
+      const computerGameAvatar = document.querySelector('.computer-game-avatar');
+      const computerGameMark = document.querySelector('.computer-game-mark');
+      const computerGameScore = document.querySelector('.computer-game-score');
+      const enemyInfo = document.querySelector('#enemy-info');
+      const computerInfo = document.querySelector('#computer-info');
+      computerGameAvatar.appendChild(computerSelectedAvatar);
+      computerGameMark.appendChild(computerSelectedMark);
+      computerGameScore.textContent = computer.score;
+      computerInfo.className = 'display-block';
+      enemyInfo.className = 'display-none';
+    }
+  };
+
   const listenClicks = () => {
     const main = document.querySelector('main');
     main.addEventListener('click', (event) => {
@@ -205,28 +253,19 @@ const newGame = (() => {
       } else if (target.classList.contains('play-btn')) {
         // IF VALIDATION FUNCTION PASSES CREATE PLAYERS OBJECTS
         if (validateSelections()) {
-          // IF PVP MODE IS ACTIVE CREATE ENEMY OBJECT
-          if (gameMode === 'pvp') {
-            const enemy = createPlayer(enemyName, enemySelectedAvatar, enemySelectedMark, 0);
-            // IF PVE MODE IS ACTIVE CREATE COMPUTER OBJECT
-          } else if (gameMode === 'pve') {
-            const computer = createPlayer(aiName, aiSelectedAvatar, aiSelectedMark, 0);
-          }
-          // CREATE PLAYER OBJECT
-          const player = createPlayer(playerName, playerSelectedAvatar, playerSelectedMark, 0);
+          createPlayers();
         }
       }
     });
   };
-  computerSelection();
+  selectComputerIcons();
   listenClicks();
   return {};
 })();
 
-// GAMEBOARD WINDOW
+// GAME PLAYING MODULE
 const playGame = (() => {
-  // GAMEBOARD GRID
-  const generateGrid = () => {
+  const generateGameboardGrid = () => {
     const gameboard = document.querySelector('#gameboard');
     gameboard.innerHTML = '';
     for (let i = 0; i < 9; i += 1) {
@@ -235,5 +274,6 @@ const playGame = (() => {
       gameboard.appendChild(gridDiv);
     }
   };
-  generateGrid();
+  generateGameboardGrid();
+  return {};
 })();
