@@ -120,15 +120,20 @@ const newGame = (() => {
 
   const selectGalaxy = (target) => {
     const gameBody = document.querySelector('#body');
+    const combatPlaceInfo = document.querySelector('#place');
     gameBody.classList.remove('body-bg', 'andromeda', 'black-eye', 'fireworks', 'milky-way');
     if (target.id === 'andromeda') {
       gameBody.classList.add('andromeda');
+      combatPlaceInfo.textContent = 'Save the Andromeda Galaxy!';
     } else if (target.id === 'black-eye') {
       gameBody.classList.add('black-eye');
+      combatPlaceInfo.textContent = 'Save the Black Eye Galaxy!';
     } else if (target.id === 'fireworks') {
       gameBody.classList.add('fireworks');
+      combatPlaceInfo.textContent = 'Save the Fireworks Galaxy!';
     } else if (target.id === 'milky-way') {
       gameBody.classList.add('milky-way');
+      combatPlaceInfo.textContent = 'Save the Milky Way Galaxy!';
     }
   };
 
@@ -192,35 +197,23 @@ const newGame = (() => {
     // PLAYER
     player = createPlayer(playerName, playerSelectedAvatar, playerSelectedMark, 0);
     const playerGameName = document.querySelector('.player-game-name');
-    const playerAvatarTitle = document.querySelector('.your-avatar');
     const playerGameAvatar = document.querySelector('.player-game-avatar');
-    const playerMarkTitle = document.querySelector('.your-mark');
     const playerGameMark = document.querySelector('.player-game-mark');
-    const playerScoreTitle = document.querySelector('.your-score');
     const playerGameScore = document.querySelector('.player-game-score');
     playerGameName.textContent = player.name;
-    playerAvatarTitle.textContent = `${player.name} Avatar`;
     playerGameAvatar.appendChild(playerSelectedAvatar);
-    playerMarkTitle.textContent = `${player.name} Mark`;
     playerGameMark.appendChild(playerSelectedMark);
-    playerScoreTitle.textContent = `${player.name} Score`;
     playerGameScore.textContent = player.score;
     if (gameMode === 'pvp') {
       // ENEMY
       enemy = createPlayer(enemyName, enemySelectedAvatar, enemySelectedMark, 0);
       const enemyGameName = document.querySelector('.enemy-game-name');
-      const enemyAvatarTitle = document.querySelector('.enemy-avatar');
       const enemyGameAvatar = document.querySelector('.enemy-game-avatar');
-      const enemyMarkTitle = document.querySelector('.enemy-mark');
       const enemyGameMark = document.querySelector('.enemy-game-mark');
-      const enemyScoreTitle = document.querySelector('.enemy-score');
       const enemyGameScore = document.querySelector('.enemy-game-score');
       enemyGameName.textContent = enemy.name;
-      enemyAvatarTitle.textContent = `${enemy.name} Avatar`;
       enemyGameAvatar.appendChild(enemySelectedAvatar);
-      enemyMarkTitle.textContent = `${enemy.name} Mark`;
       enemyGameMark.appendChild(enemySelectedMark);
-      enemyScoreTitle.textContent = `${enemy.name} Score`;
       enemyGameScore.textContent = enemy.score;
     } else if (gameMode === 'pve') {
       // COMPUTER
@@ -238,9 +231,9 @@ const newGame = (() => {
     }
   };
 
-  const listenClicks = () => {
-    const main = document.querySelector('main');
-    main.addEventListener('click', (event) => {
+  const listenWindowClicks = () => {
+    const selectionWindow = document.querySelector('#game-selection-window');
+    selectionWindow.addEventListener('click', (event) => {
       const { target } = event;
       if (target.classList.contains('game-type')) {
         selectGameType(target);
@@ -259,21 +252,45 @@ const newGame = (() => {
     });
   };
   selectComputerIcons();
-  listenClicks();
-  return {};
+  listenWindowClicks();
+  return { player };
 })();
 
-// GAME PLAYING MODULE
+// PLAYGAME MODULE
 const playGame = (() => {
   const generateGameboardGrid = () => {
-    const gameboard = document.querySelector('#gameboard');
-    gameboard.innerHTML = '';
+    const gameboardDiv = document.querySelector('#gameboard-div');
+    gameboardDiv.textContent = '';
     for (let i = 0; i < 9; i += 1) {
       const gridDiv = document.createElement('div');
-      gameboard.classList.add('grid-3x3');
-      gameboard.appendChild(gridDiv);
+      gameboardDiv.classList.add('grid-3x3');
+      gameboardDiv.appendChild(gridDiv);
     }
   };
+
+  const selectGridDiv = () => {
+    const allGridDivs = document.querySelectorAll('#gameboard-div > div');
+    allGridDivs.forEach((div) => {
+      div.addEventListener('click', () => {
+        console.log(newGame.player.name);
+      });
+    });
+  };
+
+  const listenButtonsClicks = () => {
+    const gameEndButtons = document.querySelectorAll('#end-game-buttons button');
+    gameEndButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('new-game')) {
+          window.location.reload();
+        } else if (button.classList.contains('next-round')) {
+          console.log('next round');
+        }
+      });
+    });
+  };
   generateGameboardGrid();
+  selectGridDiv();
+  listenButtonsClicks();
   return {};
 })();
