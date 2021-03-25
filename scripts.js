@@ -16,30 +16,40 @@ const newGame = (() => {
   const playerNameInput = document.querySelector('.player-name');
   const playerAvatarsTitle = document.querySelector('.player-avatar-title');
   const playerAvatars = document.querySelectorAll('.player-avatars i');
+  const playerGameAvatar = document.createElement('i');
   const playerMarksTitle = document.querySelector('.player-mark-title');
   const playerMarks = document.querySelectorAll('.player-marks i');
+  const playerGameMark = document.createElement('i');
   let playerSelectedAvatar = '';
   let playerSelectedMark = '';
-  // AVATAR & MARK SELECTION
+  // AVATAR & MARK SELECTIONS
   function selectPlayerIcons(target) {
     const playerIcons = document.querySelectorAll('#player i');
     if (target.classList.contains('fa-user-astronaut')) {
       target.classList.add('theme-astronaut');
       playerIcons[1].classList.remove('theme-cat');
-      playerSelectedAvatar = target;
+      playerGameAvatar.classList.remove('fad', 'fa-cat-space', 'theme-cat');
+      playerGameAvatar.classList.add('fad', 'fa-user-astronaut', 'theme-astronaut');
+      playerSelectedAvatar = playerGameAvatar;
     } else if (target.classList.contains('fa-cat-space')) {
       target.classList.add('theme-cat');
       playerIcons[0].classList.remove('theme-astronaut');
-      playerSelectedAvatar = target;
+      playerGameAvatar.classList.remove('fad', 'fa-user-astronaut', 'theme-astronaut');
+      playerGameAvatar.classList.add('fad', 'fa-cat-space', 'theme-cat');
+      playerSelectedAvatar = playerGameAvatar;
     }
     if (target.classList.contains('fa-rocket-launch')) {
       target.classList.add('theme-rocket');
       playerIcons[3].classList.remove('theme-comet');
-      playerSelectedMark = target;
+      playerGameMark.classList.remove('fad', 'fa-comet', 'fa-flip-horizontal', 'theme-comet');
+      playerGameMark.classList.add('fad', 'fa-rocket-launch', 'theme-rocket');
+      playerSelectedMark = playerGameMark;
     } else if (target.classList.contains('fa-comet')) {
       target.classList.add('theme-comet');
       playerIcons[2].classList.remove('theme-rocket');
-      playerSelectedMark = target;
+      playerGameMark.classList.remove('fad', 'fa-rocket-launch', 'theme-rocket');
+      playerGameMark.classList.add('fad', 'fa-comet', 'fa-flip-horizontal', 'theme-comet');
+      playerSelectedMark = playerGameMark;
     }
   }
   // ENEMY HUMAN INFO
@@ -47,52 +57,68 @@ const newGame = (() => {
   const enemyNameInput = document.querySelector('.player-enemy-name');
   const enemyAvatarsTitle = document.querySelector('.enemy-avatar-title');
   const enemyAvatars = document.querySelectorAll('.enemy-avatars i');
+  const enemyGameAvatar = document.createElement('i');
   const enemyMarksTitle = document.querySelector('.enemy-mark-title');
   const enemyMarks = document.querySelectorAll('.enemy-marks i');
+  const enemyGameMark = document.createElement('i');
   let enemySelectedAvatar = '';
   let enemySelectedMark = '';
-  // AVATAR & MARK SELECTION
+  // AVATAR & MARK SELECTIONS
   function selectEnemyIcons(target) {
     const enemyIcons = document.querySelectorAll('#player-enemy i');
     if (target.classList.contains('fa-alicorn')) {
       target.classList.add('theme-alicorn');
       enemyIcons[1].classList.remove('theme-cowboy');
-      enemySelectedAvatar = target;
+      enemyGameAvatar.classList.remove('fad', 'fa-user-cowboy', 'theme-cowboy');
+      enemyGameAvatar.classList.add('fad', 'fa-alicorn', 'fa-flip-horizontal', 'theme-alicorn');
+      enemySelectedAvatar = enemyGameAvatar;
     } else if (target.classList.contains('fa-user-cowboy')) {
       target.classList.add('theme-cowboy');
       enemyIcons[0].classList.remove('theme-alicorn');
-      enemySelectedAvatar = target;
+      enemyGameAvatar.classList.remove('fad', 'fa-alicorn', 'fa-flip-horizontal', 'theme-alicorn');
+      enemyGameAvatar.classList.add('fad', 'fa-user-cowboy', 'theme-cowboy');
+      enemySelectedAvatar = enemyGameAvatar;
     }
     if (target.classList.contains('fa-meteor')) {
       target.classList.add('theme-meteor');
       enemyIcons[3].classList.remove('theme-star');
-      enemySelectedMark = target;
+      enemyGameMark.classList.remove('fad', 'fa-star-shooting', 'theme-star');
+      enemyGameMark.classList.add('fad', 'fa-meteor', 'theme-meteor');
+      enemySelectedMark = enemyGameMark;
     } else if (target.classList.contains('fa-star-shooting')) {
       target.classList.add('theme-star');
       enemyIcons[2].classList.remove('theme-meteor');
-      enemySelectedMark = target;
+      enemyGameMark.classList.remove('fad', 'fa-meteor', 'theme-meteor');
+      enemyGameMark.classList.add('fad', 'fa-star-shooting', 'theme-star');
+      enemySelectedMark = enemyGameMark;
     }
   }
 
   // ENEMY COMPUTER INFO
   const computerAvatars = document.querySelectorAll('.alien-icon');
   const selectComputerAvatar = computerAvatars[Math.floor(Math.random() * computerAvatars.length)];
+  const computerGameAvatar = document.createElement('i');
   const computerMarks = document.querySelectorAll('.alien-mark-icon');
   const selectComputerMark = computerMarks[Math.floor(Math.random() * computerMarks.length)];
+  const computerGameMark = document.createElement('i');
   let computerSelectedAvatar = '';
   let computerSelectedMark = '';
-  // AVATAR & MARK SELECTION
+  // AVATAR & MARK SELECTIONS
   function selectComputerIcons() {
     if (selectComputerAvatar.classList.contains('fa-pastafarianism')) {
       selectComputerAvatar.classList.add('theme-pastafarianism');
+      computerGameAvatar.classList.add('fad', 'fa-pastafarianism', 'theme-pastafarianism');
     } else if (selectComputerAvatar.classList.contains('fa-alien-monster')) {
       selectComputerAvatar.classList.add('theme-alien');
+      computerGameAvatar.classList.add('fad', 'fa-alien-monster', 'theme-alien');
     }
     computerSelectedAvatar = selectComputerAvatar;
     if (selectComputerMark.classList.contains('fa-bacterium')) {
       selectComputerMark.classList.add('theme-bacterium');
+      computerGameMark.classList.add('fad', 'fa-bacterium', 'theme-bacterium');
     } else if (selectComputerMark.classList.contains('fa-virus')) {
       selectComputerMark.classList.add('theme-virus');
+      computerGameMark.classList.add('fad', 'fa-virus', 'theme-virus');
     }
     computerSelectedMark = selectComputerMark;
   }
@@ -150,7 +176,7 @@ const newGame = (() => {
     }
   }
 
-  const validateSelections = () => {
+  function validateSelections() {
     playerNameInput.classList.remove('input-error');
     playerAvatarsTitle.classList.remove('avatar-error');
     playerMarksTitle.classList.remove('mark-error');
@@ -195,35 +221,35 @@ const newGame = (() => {
       gameSelectionWindow.className = 'display-none';
       gameWindow.className = 'display-block';
     }
-  };
+  }
 
   // SHOW PLAYERS INFORMATION IN GAME PLAYING WINDOW
   function showPlayersInfo() {
     const playerGameName = document.querySelector('.player-game-name');
-    const playerGameAvatar = document.querySelector('.player-game-avatar');
-    const playerGameMark = document.querySelector('.player-game-mark');
+    const playerGameAvatarDiv = document.querySelector('.player-game-avatar');
+    const playerGameMarkDiv = document.querySelector('.player-game-mark');
     const playerGameScore = document.querySelector('.player-game-score');
     playerGameName.textContent = player.name;
-    playerGameAvatar.appendChild(playerSelectedAvatar);
-    playerGameMark.appendChild(playerSelectedMark);
+    playerGameAvatarDiv.appendChild(playerGameAvatar);
+    playerGameMarkDiv.appendChild(playerGameMark);
     playerGameScore.textContent = player.score;
     if (gameMode === 'pvp') {
       const enemyGameName = document.querySelector('.enemy-game-name');
-      const enemyGameAvatar = document.querySelector('.enemy-game-avatar');
-      const enemyGameMark = document.querySelector('.enemy-game-mark');
+      const enemyGameAvatarDiv = document.querySelector('.enemy-game-avatar');
+      const enemyGameMarkDiv = document.querySelector('.enemy-game-mark');
       const enemyGameScore = document.querySelector('.enemy-game-score');
       enemyGameName.textContent = enemy.name;
-      enemyGameAvatar.appendChild(enemySelectedAvatar);
-      enemyGameMark.appendChild(enemySelectedMark);
+      enemyGameAvatarDiv.appendChild(enemyGameAvatar);
+      enemyGameMarkDiv.appendChild(enemyGameMark);
       enemyGameScore.textContent = enemy.score;
     } else if (gameMode === 'pve') {
-      const computerGameAvatar = document.querySelector('.computer-game-avatar');
-      const computerGameMark = document.querySelector('.computer-game-mark');
+      const computerGameAvatarDiv = document.querySelector('.computer-game-avatar');
+      const computerGameMarkDiv = document.querySelector('.computer-game-mark');
       const computerGameScore = document.querySelector('.computer-game-score');
       const enemyInfo = document.querySelector('#enemy-info');
       const computerInfo = document.querySelector('#computer-info');
-      computerGameAvatar.appendChild(computerSelectedAvatar);
-      computerGameMark.appendChild(computerSelectedMark);
+      computerGameAvatarDiv.appendChild(computerGameAvatar);
+      computerGameMarkDiv.appendChild(computerGameMark);
       computerGameScore.textContent = enemy.score;
       computerInfo.className = 'display-block';
       enemyInfo.className = 'display-none';
@@ -249,17 +275,17 @@ const newGame = (() => {
 
   return {
     updatePlayerObj,
-    player,
     updateEnemyObj,
-    enemy,
     validateSelections,
     showPlayersInfo,
+    player,
+    enemy,
   };
 })();
 
 // PLAYGAME MODULE
 const playGame = (() => {
-  const generateGameboardGrid = () => {
+  function generateGameboardGrid() {
     const gameboardDiv = document.querySelector('#gameboard-div');
     gameboardDiv.textContent = '';
     for (let i = 0; i < 9; i += 1) {
@@ -267,25 +293,36 @@ const playGame = (() => {
       gameboardDiv.classList.add('grid-3x3');
       gameboardDiv.appendChild(gridDiv);
     }
-  };
+  }
 
-  const selectGridDiv = () => {
+  function selectGridDiv() {
     const allGridDivs = document.querySelectorAll('#gameboard-div > div');
+    const gameboard = [];
+    let click = 1;
     allGridDivs.forEach((div) => {
-      div.addEventListener('click', () => {
-        div.style.backgroundColor = '#9370DB';
+      gameboard.push(div);
+    });
+    gameboard.forEach((item) => {
+      item.addEventListener('click', () => {
+        if (click === 1) {
+          console.log(newGame.player.mark, item);
+          click += 1;
+        } else if (click === 2) {
+          console.log(newGame.enemy.mark, item);
+          click -= 1;
+        }
       });
     });
-  };
+  }
 
-  const listenButtonsClicks = () => {
+  function listenButtonsClicks() {
     const gameButtons = document.querySelectorAll('button');
     gameButtons.forEach((button) => {
       button.addEventListener('click', () => {
         if (button.classList.contains('play-btn')) {
-          newGame.validateSelections();
           newGame.updatePlayerObj();
           newGame.updateEnemyObj();
+          newGame.validateSelections();
           newGame.showPlayersInfo();
         } else if (button.classList.contains('new-game')) {
           window.location.reload();
@@ -294,7 +331,7 @@ const playGame = (() => {
         }
       });
     });
-  };
+  }
   generateGameboardGrid();
   selectGridDiv();
   listenButtonsClicks();

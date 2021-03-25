@@ -166,6 +166,9 @@
   margin-top: 0;
   font-size: 15px;
 }
+#end-game-buttons {
+  margin-top: 20px;
+}
 
 /* BUTTONS STYLING */
 #game-type button,
