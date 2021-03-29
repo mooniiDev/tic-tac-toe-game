@@ -104,6 +104,7 @@
 #enemy-info,
 #computer-info,
 #end-game-buttons,
+#winner-text,
 #footer {
   text-align: center;
 }
@@ -275,7 +276,7 @@
 #place {
   margin: 0 0 40px 0;
 }
-#gameboard-div {
+#gameboard {
   display: grid;
   grid-gap: 2px;
   height: 300px;
@@ -283,7 +284,7 @@
   border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
 }
-#gameboard-div > div {
+#gameboard > div {
   background-color: #FFF;
 }
 .grid-3x3 {
@@ -311,11 +312,20 @@
 .computer-game-mark {
   font-size: 50px;
 }
+.mark-clone {
+  padding: 20px;
+  font-size: 60px;
+}
 .player-game-score,
 .enemy-game-score,
 .computer-game-score {
   font-size: 30px;
 }
+
+#winner-text {
+  font-weight: 900;
+}
+
 #footer {
   font-size: 15px;
 }
