@@ -262,6 +262,7 @@ const newGame = (() => {
     updateEnemyObj,
     validateSelections,
     showPlayersInfo,
+    selectGalaxy,
     player,
     enemy,
   };
@@ -269,50 +270,63 @@ const newGame = (() => {
 
 // PLAYGAME MODULE
 const playGame = (() => {
-  const playerGameboard = [false, false, false, false, false, false, false, false, false];
-  const enemyGameboard = [false, false, false, false, false, false, false, false, false];
-  let markSpot = '';
+  const gameboardDiv = document.querySelector('#gameboard');
+  const gameboard = ['', '', '', '', '', '', '', '', ''];
 
   function generateGameboard() {
-    const boardDiv = document.querySelector('#gameboard');
-    boardDiv.textContent = '';
+    gameboardDiv.textContent = '';
     for (let i = 0; i < 9; i += 1) {
       const boardSpot = document.createElement('div');
-      boardDiv.classList.add('grid-3x3');
+      gameboardDiv.classList.add('grid-3x3');
       boardSpot.setAttribute('data-index', i);
-      boardDiv.appendChild(boardSpot);
+      gameboardDiv.appendChild(boardSpot);
     }
   }
 
-  function updateBoards(character) {
-    if (character === 'player') {
-      playerGameboard[markSpot] = true;
-    } else if (character === 'enemy') {
-      enemyGameboard[markSpot] = true;
+  function checkWinner(character) {
+    if ((gameboard[0] === character && gameboard[1] === character && gameboard[2] === character)
+    || (gameboard[3] === character && gameboard[4] === character && gameboard[5] === character)
+    || (gameboard[6] === character && gameboard[7] === character && gameboard[8] === character)
+    || (gameboard[0] === character && gameboard[3] === character && gameboard[6] === character)
+    || (gameboard[1] === character && gameboard[4] === character && gameboard[7] === character)
+    || (gameboard[2] === character && gameboard[5] === character && gameboard[8] === character)
+    || (gameboard[0] === character && gameboard[4] === character && gameboard[8] === character)
+    || (gameboard[2] === character && gameboard[4] === character && gameboard[6] === character)) {
+      if (character === 'player') {
+        console.log(`${newGame.player.name} is the winner!`);
+      } else if (character === 'enemy') {
+        console.log(`${newGame.enemy.name} is the winner!`);
+      }
     }
   }
 
-  function selectSpot() {
+  function clickBoardSpot() {
     const allBoardSpots = document.querySelectorAll('#gameboard > div');
     let click = 1;
-    allBoardSpots.forEach((div) => {
-      div.addEventListener('click', () => {
-        if (click === 1) {
-          const playerMark = newGame.player.mark;
-          const playerMarkClone = playerMark.cloneNode();
-          playerMarkClone.classList.add('mark-clone');
-          div.appendChild(playerMarkClone);
-          markSpot = div.getAttribute('data-index');
-          updateBoards('player');
-          click += 1;
-        } else if (click === 2) {
-          const enemyMark = newGame.enemy.mark;
-          const enemyMarkClone = enemyMark.cloneNode();
-          enemyMarkClone.classList.add('mark-clone');
-          div.appendChild(enemyMarkClone);
-          markSpot = div.getAttribute('data-index');
-          updateBoards('enemy');
-          click -= 1;
+    let clickedSpot = '';
+    allBoardSpots.forEach((spot) => {
+      spot.addEventListener('click', () => {
+        if (!spot.hasAttribute('clicked', true)) {
+          // PLAYER MOVE
+          if (click === 1) {
+            const playerMarkClone = newGame.player.mark.cloneNode();
+            playerMarkClone.classList.add('mark-clone');
+            spot.appendChild(playerMarkClone);
+            spot.setAttribute('clicked', true);
+            clickedSpot = spot.getAttribute('data-index'); // get index of player clicked spot
+            gameboard[clickedSpot] = 'player';
+            click += 1;
+            // ENEMY MOVE
+          } else if (click === 2) {
+            const enemyMarkClone = newGame.enemy.mark.cloneNode();
+            enemyMarkClone.classList.add('mark-clone');
+            spot.appendChild(enemyMarkClone);
+            spot.setAttribute('clicked', true);
+            clickedSpot = spot.getAttribute('data-index'); // get index of enemy clicked spot
+            gameboard[clickedSpot] = 'enemy';
+            click -= 1;
+          }
+          checkWinner(gameboard[clickedSpot]);
         }
       });
     });
@@ -323,9 +337,9 @@ const playGame = (() => {
     gameButtons.forEach((button) => {
       button.addEventListener('click', () => {
         if (button.classList.contains('play-btn')) {
+          newGame.validateSelections();
           newGame.updatePlayerObj();
           newGame.updateEnemyObj();
-          newGame.validateSelections();
           newGame.showPlayersInfo();
         } else if (button.classList.contains('new-game')) {
           window.location.reload();
@@ -336,7 +350,7 @@ const playGame = (() => {
     });
   }
   generateGameboard();
-  selectSpot();
+  clickBoardSpot();
   listenButtonsClicks();
   return {};
 })();
