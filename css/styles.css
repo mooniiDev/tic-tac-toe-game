@@ -103,7 +103,7 @@
 #player-info,
 #enemy-info,
 #computer-info,
-#end-game-buttons,
+#end-game-button,
 #winner-text,
 #footer {
   text-align: center;
@@ -167,14 +167,14 @@
   margin-top: 0;
   font-size: 15px;
 }
-#end-game-buttons {
+#end-game-button {
   margin-top: 20px;
 }
 
 /* BUTTONS STYLING */
 #game-type button,
 .play-btn,
-#end-game-buttons button {
+.new-game-btn {
   margin: 20px;
   padding: 10px 40px;
   background-color: transparent;
@@ -185,7 +185,7 @@
   transition: 0.2s;
   outline: none;
 }
-#end-game-buttons button {
+#end-game-button button {
   margin: 10px 20px;
   padding: 10px;
 }
@@ -193,8 +193,8 @@
 #game-type button:focus,
 .play-btn:hover,
 .play-btn:focus,
-#end-game-buttons button:hover,
-#end-game-buttons button:focus {
+#end-game-button button:hover,
+#end-game-button button:focus {
   cursor: pointer;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
   transition: 0.2s;
@@ -279,7 +279,7 @@
 #gameboard {
   display: grid;
   grid-gap: 2px;
-  height: 300px;
+  height: 304px;
   margin-top: 20px;
   border-radius: 5px;
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
@@ -299,7 +299,7 @@
 .player-game-name,
 .enemy-game-name,
 .computer-game-name {
-  margin: 0 20px;
+  margin: 0 0 40px 0;
 }
 .name-box {
   box-shadow: 0px 6px 2px -5px var(--white);
@@ -316,14 +316,9 @@
   padding: 20px;
   font-size: 60px;
 }
-.player-game-score,
-.enemy-game-score,
-.computer-game-score {
-  font-size: 30px;
-}
 
 #winner-text {
-  margin-bottom: 30px;
+  margin-top: 60px;
   font-weight: 900;
 }
 

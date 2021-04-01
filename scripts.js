@@ -1,9 +1,8 @@
-function createPlayer(name, avatar, mark, score) {
+function createPlayer(name, avatar, mark) {
   return {
     name,
     avatar,
     mark,
-    score,
   };
 }
 
@@ -12,7 +11,7 @@ const newGame = (() => {
   let gameMode = 'pvp'; // Default game mode
 
   // PLAYER ONE INFO
-  const player = createPlayer('', '', '', 0);
+  const player = createPlayer('', '', '');
   const playerNameInput = document.querySelector('.player-name');
   const playerAvatarsTitle = document.querySelector('.player-avatar-title');
   const playerAvatars = document.querySelectorAll('.player-avatars i');
@@ -47,7 +46,7 @@ const newGame = (() => {
     }
   }
   // ENEMY HUMAN INFO
-  const enemy = createPlayer('', '', '', 0);
+  const enemy = createPlayer('', '', '');
   const enemyNameInput = document.querySelector('.player-enemy-name');
   const enemyAvatarsTitle = document.querySelector('.enemy-avatar-title');
   const enemyAvatars = document.querySelectorAll('.enemy-avatars i');
@@ -212,29 +211,23 @@ const newGame = (() => {
     const playerGameName = document.querySelector('.player-game-name');
     const playerGameAvatarDiv = document.querySelector('.player-game-avatar');
     const playerGameMarkDiv = document.querySelector('.player-game-mark');
-    const playerGameScore = document.querySelector('.player-game-score');
     playerGameName.textContent = player.name;
     playerGameAvatarDiv.appendChild(playerGameAvatar);
     playerGameMarkDiv.appendChild(playerGameMark);
-    playerGameScore.textContent = player.score;
     if (gameMode === 'pvp') {
       const enemyGameName = document.querySelector('.enemy-game-name');
       const enemyGameAvatarDiv = document.querySelector('.enemy-game-avatar');
       const enemyGameMarkDiv = document.querySelector('.enemy-game-mark');
-      const enemyGameScore = document.querySelector('.enemy-game-score');
       enemyGameName.textContent = enemy.name;
       enemyGameAvatarDiv.appendChild(enemyGameAvatar);
       enemyGameMarkDiv.appendChild(enemyGameMark);
-      enemyGameScore.textContent = enemy.score;
     } else if (gameMode === 'pve') {
       const computerGameAvatarDiv = document.querySelector('.computer-game-avatar');
       const computerGameMarkDiv = document.querySelector('.computer-game-mark');
-      const computerGameScore = document.querySelector('.computer-game-score');
       const enemyInfo = document.querySelector('#enemy-info');
       const computerInfo = document.querySelector('#computer-info');
       computerGameAvatarDiv.appendChild(computerGameAvatar);
       computerGameMarkDiv.appendChild(computerGameMark);
-      computerGameScore.textContent = enemy.score;
       computerInfo.className = 'display-block';
       enemyInfo.className = 'display-none';
     }
@@ -303,7 +296,7 @@ const playGame = (() => {
       return winner;
     }
     if (!gameboard.includes('')) { // If there is no winner
-      winnerText.textContent = 'MEH.. NO ONE DEFENDED OR DESTROYED THE COSMOS..';
+      winnerText.textContent = 'MEH.. NO ONE DEFENDED OR DESTROYED A HUGE PIECE OF COSMOS..';
     }
     return false;
   }
@@ -349,10 +342,8 @@ const playGame = (() => {
           newGame.updatePlayerObj();
           newGame.updateEnemyObj();
           newGame.showPlayersInfo();
-        } else if (button.classList.contains('new-game')) {
+        } else if (button.classList.contains('new-game-btn')) {
           window.location.reload();
-        } else if (button.classList.contains('next-round')) {
-          console.log('next round');
         }
       });
     });
