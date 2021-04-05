@@ -26,7 +26,7 @@
 #### **Outcome:**
 * Used **HTML5 semantic elements** for better structure and readability
 * Used **CSS Flexbox** module to create layout
-* Improved **HTML `id`** and **`class` naming**
+* Improved **HTML** `id` and `class` **naming**
 * Improved **CSS code readability** (**added** clear comments, colors palette to the `:root`, **seperated** ninputs / icons / errors / buttons / displaying / alignment styling, **improved** code structure)
 * Deepened knowledge of **DOM manipulation**
 * Learned more about **objects**, **factory functions** and **module pattern**
