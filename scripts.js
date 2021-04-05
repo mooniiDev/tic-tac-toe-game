@@ -142,7 +142,7 @@ const newGame = (() => {
   function selectGalaxy(target) {
     const gameBody = document.querySelector('#body');
     const combatPlaceInfo = document.querySelector('#place');
-    gameBody.classList.remove('body-bg', 'andromeda', 'black-eye', 'fireworks', 'milky-way');
+    gameBody.classList.remove('sky', 'andromeda', 'black-eye', 'fireworks', 'milky-way');
     if (target.id === 'andromeda') {
       gameBody.classList.add('andromeda');
       combatPlaceInfo.textContent = 'Save the Andromeda Galaxy!';
