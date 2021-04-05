@@ -256,7 +256,6 @@ const newGame = (() => {
     updateEnemyObj,
     validateSelections,
     showPlayersInfo,
-    selectGalaxy,
     player,
     enemy,
   };
