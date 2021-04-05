@@ -80,7 +80,6 @@ const newGame = (() => {
       enemyGameMark.classList.add('fad', 'fa-star-shooting', 'theme-star');
     }
   }
-
   // ENEMY COMPUTER INFO
   const computerAvatars = document.querySelectorAll('.alien-icon');
   const selectComputerAvatar = computerAvatars[Math.floor(Math.random() * computerAvatars.length)];
@@ -106,7 +105,7 @@ const newGame = (() => {
     }
   }
 
-  // UPDATE PLAYER OBJECT
+  // UPDATE PLAYER ONE OBJECT
   function updatePlayerObj() {
     player.name = playerNameInput.value;
     player.avatar = playerGameAvatar;
@@ -166,7 +165,7 @@ const newGame = (() => {
     enemyNameInput.classList.remove('input-error');
     enemyAvatarsTitle.classList.remove('avatar-error');
     enemyMarksTitle.classList.remove('mark-error');
-    // PLAYER NAME, AVATAR & MARK VALIDATIONS
+    // PLAYER ONE NAME, AVATAR & MARK VALIDATIONS
     if (playerNameInput.value === '' || playerNameInput.value === 'Your Name') {
       playerNameInput.classList.add('input-error');
     }
@@ -211,6 +210,8 @@ const newGame = (() => {
     const playerGameName = document.querySelector('.player-game-name');
     const playerGameAvatarDiv = document.querySelector('.player-game-avatar');
     const playerGameMarkDiv = document.querySelector('.player-game-mark');
+    const enemyInfo = document.querySelector('#enemy-info');
+    const computerInfo = document.querySelector('#computer-info');
     playerGameName.textContent = player.name;
     playerGameAvatarDiv.appendChild(playerGameAvatar);
     playerGameMarkDiv.appendChild(playerGameMark);
@@ -221,11 +222,11 @@ const newGame = (() => {
       enemyGameName.textContent = enemy.name;
       enemyGameAvatarDiv.appendChild(enemyGameAvatar);
       enemyGameMarkDiv.appendChild(enemyGameMark);
+      enemyInfo.className = 'display-block';
+      computerInfo.className = 'display-none';
     } else if (gameMode === 'pve') {
       const computerGameAvatarDiv = document.querySelector('.computer-game-avatar');
       const computerGameMarkDiv = document.querySelector('.computer-game-mark');
-      const enemyInfo = document.querySelector('#enemy-info');
-      const computerInfo = document.querySelector('#computer-info');
       computerGameAvatarDiv.appendChild(computerGameAvatar);
       computerGameMarkDiv.appendChild(computerGameMark);
       computerInfo.className = 'display-block';
@@ -273,6 +274,7 @@ const playGame = (() => {
       const boardSpot = document.createElement('div');
       gameboardDiv.classList.add('grid-3x3');
       boardSpot.setAttribute('data-index', i);
+      boardSpot.setAttribute('data-unclicked', true);
       gameboardDiv.appendChild(boardSpot);
     }
   }
@@ -287,16 +289,16 @@ const playGame = (() => {
     || (gameboard[2] === character && gameboard[5] === character && gameboard[8] === character)
     || (gameboard[0] === character && gameboard[4] === character && gameboard[8] === character)
     || (gameboard[2] === character && gameboard[4] === character && gameboard[6] === character)) {
-      if (character === 'player') { // If the winner is a player
+      if (character === 'player') { // If the winner is player one
         winnerText.textContent = `WOOHOO! ${newGame.player.name} DEFENDED A HUGE PIECE OF COSMOS!`;
-      } else if (character === 'enemy') { // If the winner is an enemy
+      } else if (character === 'enemy') { // If the winner is enemy human
         winnerText.textContent = `OH, NO! ${newGame.enemy.name} DESTROYED A HUGE PIECE OF COSMOS!`;
       }
       winner = true;
       return winner;
     }
     if (!gameboard.includes('')) { // If there is no winner
-      winnerText.textContent = 'MEH.. NO ONE DEFENDED OR DESTROYED A HUGE PIECE OF COSMOS..';
+      winnerText.textContent = 'MEH.. NO ONE DEFENDED OR DESTROYED THIS HUGE PIECE OF COSMOS..';
     }
     return false;
   }
@@ -307,28 +309,44 @@ const playGame = (() => {
     let clickedSpot = '';
     allBoardSpots.forEach((spot) => {
       spot.addEventListener('click', () => {
-        if (!spot.hasAttribute('data-clicked', true) && winner === false) {
+        if (spot.hasAttribute('data-unclicked', true) && winner === false) {
           // PLAYER MOVE
           if (click === 1) {
             const playerMarkClone = newGame.player.mark.cloneNode();
             playerMarkClone.classList.add('mark-clone');
             spot.appendChild(playerMarkClone);
+            spot.removeAttribute('data-unclicked', true);
             spot.setAttribute('data-clicked', true);
-            clickedSpot = spot.getAttribute('data-index'); // Get index of player clicked spot
+            clickedSpot = spot.getAttribute('data-index'); // get index of player one clicked spot
             gameboard[clickedSpot] = 'player';
             click += 1;
-            // ENEMY MOVE
+            checkWinner(gameboard[clickedSpot]);
+            // ENEMY COMPUTER MOVE IF GAME MODE IS PVE
+            if (newGame.enemy.name === 'Alienzo') {
+              const freeBoardSpots = document.querySelectorAll('[data-unclicked]');
+              const enemyMarkClone = newGame.enemy.mark.cloneNode();
+              const computerClick = freeBoardSpots[Math.floor(Math.random() * freeBoardSpots.length)];
+              enemyMarkClone.classList.add('mark-clone');
+              computerClick.removeAttribute('data-unclicked', true);
+              computerClick.setAttribute('data-clicked', true);
+              computerClick.appendChild(enemyMarkClone);
+              clickedSpot = computerClick.getAttribute('data-index'); // get index of enemy computer clicked spot
+              gameboard[clickedSpot] = 'enemy';
+              click -= 1;
+            }
+            // ENEMY HUMAN MOVE
           } else if (click === 2) {
             const enemyMarkClone = newGame.enemy.mark.cloneNode();
             enemyMarkClone.classList.add('mark-clone');
             spot.appendChild(enemyMarkClone);
+            spot.removeAttribute('data-unclicked', true);
             spot.setAttribute('data-clicked', true);
-            clickedSpot = spot.getAttribute('data-index'); // Get index of enemy clicked spot
+            clickedSpot = spot.getAttribute('data-index'); // get index of enemy human clicked spot
             gameboard[clickedSpot] = 'enemy';
             click -= 1;
           }
+          checkWinner(gameboard[clickedSpot]);
         }
-        checkWinner(gameboard[clickedSpot]);
       });
     });
   }
