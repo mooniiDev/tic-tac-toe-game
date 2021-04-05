@@ -15,6 +15,27 @@
   --cream: #FFDDD2;
 }
 
+#body {
+  background-color: #636AAE;
+  background-size: stretch;
+  background-repeat: no-repeat;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 20px;
+  color: var(--white);
+}
+.sky {
+  background-image: url('../images/sky.jpg'); /* Default body background image */
+}
+
+#header h1 {
+  font-family: 'Codystar', cursive;
+  margin-bottom: 0;
+}
+#header p {
+  margin-top: 0;
+  font-size: 15px;
+}
+
 /* ICONS STYLING */
 .theme-astronaut {
   --fa-primary-color: var(--dark-blue);
@@ -146,27 +167,6 @@
 #computer-info {
   margin: 0 30px;
   width: 200px;
-}
-
-#body {
-  background-color: #636AAE;
-  background-size: stretch;
-  background-repeat: no-repeat;
-  font-family: 'Quicksand', sans-serif;
-  font-size: 20px;
-  color: var(--white);
-}
-.sky {
-  background-image: url('../images/sky.jpg'); /* Default body background image */
-}
-
-#header h1 {
-  font-family: 'Codystar', cursive;
-  margin-bottom: 0;
-}
-#header p {
-  margin-top: 0;
-  font-size: 15px;
 }
 
 /* BUTTONS STYLING */

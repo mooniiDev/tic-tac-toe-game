@@ -325,7 +325,8 @@ const playGame = (() => {
             if (newGame.enemy.name === 'Alienzo') {
               const freeBoardSpots = document.querySelectorAll('[data-unclicked]');
               const enemyMarkClone = newGame.enemy.mark.cloneNode();
-              const computerClick = freeBoardSpots[Math.floor(Math.random() * freeBoardSpots.length)];
+              const computerClick = freeBoardSpots[
+                Math.floor(Math.random() * freeBoardSpots.length)];
               enemyMarkClone.classList.add('mark-clone');
               computerClick.removeAttribute('data-unclicked', true);
               computerClick.setAttribute('data-clicked', true);
