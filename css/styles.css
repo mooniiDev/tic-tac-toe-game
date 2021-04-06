@@ -16,8 +16,8 @@
 }
 
 #body {
-  background-color: #636AAE;
-  background-size: stretch;
+  background-color: #3B418B;
+  background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
@@ -239,6 +239,7 @@
   background-color: var(--violet);
 }
 .andromeda {
+  background-color: var(--violet) !important;
   background-image: url('../images/andromeda.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -247,6 +248,7 @@
   background-color: var(--black);
 }
 .black-eye  {
+  background-color: var(--black) !important;
   background-image: url('../images/black-eye.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -255,6 +257,7 @@
   background-color: var(--purple);
 }
 .fireworks {
+  background-color: var(--purple) !important;
   background-image: url('../images/fireworks.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -265,6 +268,7 @@
   background-color: var(--blue);
 }
 .milky-way {
+  background-color: var(--blue) !important;
   background-image: url('../images/milky-way.jpg');
   background-size: cover;
   background-repeat: no-repeat;

@@ -31,4 +31,4 @@
 * Deepened knowledge of **DOM manipulation**
 * Learned more about **objects**, **factory functions** and **module pattern**
 * Improved understanding of **scope** and **closures**
-* Really tried to create ***gameish* mood** 🌟
+* Really tried to create ***gameish* atmosphere** 👾
