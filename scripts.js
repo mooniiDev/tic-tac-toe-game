@@ -321,7 +321,7 @@ const playGame = (() => {
             click += 1;
             checkWinner(gameboard[clickedSpot]);
             // ENEMY COMPUTER MOVE IF GAME MODE IS PVE
-            if (newGame.enemy.name === 'Alienzo') {
+            if (newGame.enemy.name === 'Alienzo' && winner === false) {
               const freeBoardSpots = document.querySelectorAll('[data-unclicked]');
               const enemyMarkClone = newGame.enemy.mark.cloneNode();
               const computerClick = freeBoardSpots[
