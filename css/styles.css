@@ -290,7 +290,7 @@
   box-shadow: rgba(255, 255, 255, 0.5) 0px 0px 20px 5px;
 }
 #gameboard > div {
-  background-color: #FFF;
+  background-color: var(--white);
 }
 .grid-3x3 {
   grid-template-columns: repeat(3, auto);
@@ -339,6 +339,6 @@
 }
 #footer a:hover,
 #footer a:focus {
-  color: var(--dark-blue);
+  color: var(--white);
   transition: 0.2s;
 }
