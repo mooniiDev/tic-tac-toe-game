@@ -339,6 +339,6 @@
 }
 #footer a:hover,
 #footer a:focus {
-  color: var(--white);
+  color: var(--dark-blue);
   transition: 0.2s;
 }
